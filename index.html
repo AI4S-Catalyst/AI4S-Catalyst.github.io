@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI4Science Catalyst Series</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts for Tech/AI feel -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'ai-dark': '#ffffff',
+                        'ai-panel': '#f8fafc',
+                        'ai-cyan': '#0097a7', /* Darker cyan for light mode visibility */
+                        'ai-purple': '#6200ea',
+                        'ai-accent': '#00F0FF', /* Bright accent for small details */
+                    },
+                    fontFamily: {
+                        'tech': ['"Space Grotesk"', 'sans-serif'],
+                        'mono': ['"JetBrains Mono"', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #ffffff;
+            color: #1e293b;
+            /* Subtle light grid or gradient for tech feel on white */
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(98, 0, 234, 0.03) 0%, transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(0, 151, 167, 0.03) 0%, transparent 25%);
+        }
+        
+        /* Typewriter Cursor Animation */
+        .cursor {
+            display: inline-block;
+            width: 10px;
+            background-color: #0097a7;
+            animation: blink 1s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        h1, h2, h3 {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        
+        .code-font {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Table Styles for Light Mode */
+        th {
+            text-align: left;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 12px;
+            color: #64748b;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        td {
+            border-bottom: 1px solid #f1f5f9;
+            padding: 16px 0;
+            vertical-align: top;
+        }
+        tr:hover td {
+            background-color: #f8fafc;
+        }
+    </style>
+</head>
+<body class="min-h-screen font-tech selection:bg-ai-cyan selection:text-white">
+
+    <div class="max-w-6xl mx-auto px-6 py-12">
+        
+        <!-- Header Section -->
+        <header class="mb-16 border-b border-gray-200 pb-10">
+            
+            <!-- Logos Row -->
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6 mb-10">
+                <!-- Left: AI4S Logo -->
+                <div class="flex items-center gap-4">
+                     <img src="http://googleusercontent.com/image_generation_content/0" alt="AI4S Catalysis Institute" class="h-16 w-auto object-contain rounded-lg shadow-sm border border-gray-100 p-1">
+                     <div class="flex flex-col">
+                         <span class="text-lg font-bold text-gray-900 leading-tight">AI4S Catalysis</span>
+                         <span class="text-sm text-gray-500 font-mono">Institute</span>
+                     </div>
+                </div>
+
+                <!-- Right: University Logos -->
+                <div class="flex items-center gap-8 opacity-90">
+                    <!-- Stanford Logo with Text -->
+                    <img src="https://medos-ai.github.io/assets/logos/stanford.png" alt="Stanford University" class="h-10 md:h-12 w-auto object-contain hover:opacity-100 transition">
+                    
+                    <!-- Princeton Logo with Text -->
+                    <img src="https://medos-ai.github.io/assets/logos/princeton.png" alt="Princeton University" class="h-10 md:h-12 w-auto object-contain hover:opacity-100 transition">
+                </div>
+            </div>
+
+            <div class="flex flex-col md:flex-row items-center justify-between gap-8">
+                <div class="w-full">
+                    <div class="flex items-center gap-3 mb-2">
+                        <span class="px-2 py-1 text-xs font-mono text-ai-cyan border border-ai-cyan/30 rounded bg-ai-cyan/5 font-bold">VIRTUAL SERIES</span>
+                    </div>
+                    <h1 class="text-5xl md:text-6xl font-bold mb-4 tracking-tight text-gray-900">
+                        AI4Science <span class="text-transparent bg-clip-text bg-gradient-to-r from-ai-cyan to-ai-purple">Catalyst</span>
+                    </h1>
+                    
+                    <!-- Typewriter Effect -->
+                    <div class="text-2xl md:text-3xl text-gray-500 font-light h-12 flex items-center">
+                        <span class="mr-2">Catalyzing</span> 
+                        <span id="typewriter-text" class="text-gray-900 font-mono font-bold border-b-2 border-ai-cyan/50 pb-1">AI for Science</span>
+                        <span class="cursor h-8 ml-1 align-middle"></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Webinar Info Bar -->
+            <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="flex items-center gap-3 p-4 bg-gray-50 rounded border border-gray-200">
+                    <div class="w-8 h-8 rounded-full bg-ai-cyan/10 flex items-center justify-center text-ai-cyan">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <div>
+                        <div class="text-xs text-gray-500 font-mono uppercase">Format</div>
+                        <div class="text-sm text-gray-800 font-medium">Zoom Webinar</div>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3 p-4 bg-gray-50 rounded border border-gray-200">
+                    <div class="w-8 h-8 rounded-full bg-ai-cyan/10 flex items-center justify-center text-ai-cyan">
+                        <i class="far fa-clock"></i>
+                    </div>
+                    <div>
+                        <div class="text-xs text-gray-500 font-mono uppercase">Time</div>
+                        <div class="text-sm text-gray-800 font-medium">Tuesdays, 10:00 AM PT</div>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3 p-4 bg-gray-50 rounded border border-gray-200 cursor-pointer hover:border-ai-cyan/50 transition group hover:bg-white hover:shadow-md">
+                    <div class="w-8 h-8 rounded-full bg-ai-cyan/10 flex items-center justify-center text-ai-cyan group-hover:bg-ai-cyan group-hover:text-white transition">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div>
+                        <div class="text-xs text-gray-500 font-mono uppercase">Stay Updated</div>
+                        <div class="text-sm text-ai-cyan font-bold">Subscribe to List</div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Organizers Section -->
+        <section class="mb-20">
+            <h2 class="text-2xl font-bold mb-8 flex items-center gap-3 text-gray-900">
+                <span class="w-1 h-6 bg-ai-cyan rounded-full"></span>
+                Organizers
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Organizer 1 -->
+                <div class="group relative bg-white p-6 rounded-xl border border-gray-200 hover:border-ai-cyan/50 hover:shadow-lg transition-all duration-300">
+                    <div class="flex flex-col items-center text-center">
+                        <div class="relative w-28 h-28 mb-4">
+                            <div class="absolute inset-0 bg-gradient-to-br from-ai-cyan to-ai-purple rounded-full opacity-0 group-hover:opacity-10 blur-lg transition-opacity"></div>
+                            <img src="https://github.com/wu-yc/wu-yc.github.io.original/blob/master/images/CV-photo1.jpeg?raw=true" alt="Yingcheng Wu" class="relative w-full h-full object-cover rounded-full border-2 border-gray-100 group-hover:border-ai-cyan transition-colors">
+                        </div>
+                        <h4 class="font-bold text-lg text-gray-900 group-hover:text-ai-cyan transition-colors">Yingcheng Wu</h4>
+                        <p class="text-xs font-mono text-ai-cyan mt-1 font-semibold">Stanford University</p>
+                    </div>
+                </div>
+
+                <!-- Organizer 2 -->
+                <div class="group relative bg-white p-6 rounded-xl border border-gray-200 hover:border-ai-cyan/50 hover:shadow-lg transition-all duration-300">
+                    <div class="flex flex-col items-center text-center">
+                        <div class="relative w-28 h-28 mb-4">
+                            <div class="absolute inset-0 bg-gradient-to-br from-ai-cyan to-ai-purple rounded-full opacity-0 group-hover:opacity-10 blur-lg transition-opacity"></div>
+                            <img src="https://med.stanford.edu/services/api/cap/profiles/photocache.186687.jpg" alt="Le Cong" class="relative w-full h-full object-cover rounded-full border-2 border-gray-100 group-hover:border-ai-cyan transition-colors">
+                        </div>
+                        <h4 class="font-bold text-lg text-gray-900 group-hover:text-ai-cyan transition-colors">Le Cong</h4>
+                        <p class="text-xs font-mono text-ai-cyan mt-1 font-semibold">Stanford University</p>
+                    </div>
+                </div>
+
+                <!-- Organizer 3 -->
+                <div class="group relative bg-white p-6 rounded-xl border border-gray-200 hover:border-ai-cyan/50 hover:shadow-lg transition-all duration-300">
+                    <div class="flex flex-col items-center text-center">
+                        <div class="relative w-28 h-28 mb-4">
+                            <div class="absolute inset-0 bg-gradient-to-br from-ai-cyan to-ai-purple rounded-full opacity-0 group-hover:opacity-10 blur-lg transition-opacity"></div>
+                            <img src="https://orfe.princeton.edu/sites/g/files/toruqf1286/files/styles/freeform_750w/public/2022-08/screen_shot_2022-08-08_at_9.27.17_am.png?itok=ffe8z715" alt="Mengdi Wang" class="relative w-full h-full object-cover rounded-full border-2 border-gray-100 group-hover:border-ai-cyan transition-colors">
+                        </div>
+                        <h4 class="font-bold text-lg text-gray-900 group-hover:text-ai-cyan transition-colors">Mengdi Wang</h4>
+                        <p class="text-xs font-mono text-ai-cyan mt-1 font-semibold">Princeton University</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-8 text-center">
+                <a href="mailto:organizers@example.com" class="inline-flex items-center gap-2 px-6 py-2 bg-white border border-gray-300 text-gray-600 text-sm font-mono rounded hover:border-ai-cyan hover:text-ai-cyan hover:shadow-sm transition-all">
+                    <i class="far fa-envelope"></i> Contact Organizers
+                </a>
+            </div>
+        </section>
+
+        <!-- Main Content Area -->
+        <div class="grid grid-cols-1 gap-12">
+            
+            <!-- Upcoming Talks -->
+            <section>
+                <h2 class="text-2xl font-bold mb-6 flex items-center gap-3 text-gray-900">
+                    <span class="w-1 h-6 bg-ai-cyan rounded-full"></span>
+                    Upcoming Talks
+                </h2>
+                <div class="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm">
+                    <div class="overflow-x-auto p-4">
+                        <table class="w-full text-sm md:text-base">
+                            <thead>
+                                <tr>
+                                    <th class="w-1/6">Date</th>
+                                    <th class="w-1/4">Speaker</th>
+                                    <th>Title</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-gray-700">
+                                <!-- Blank rows for effect -->
+                                <tr>
+                                    <td colspan="3" class="text-center py-12 text-gray-400 font-mono text-sm">
+                                        // NO UPCOMING SESSIONS SCHEDULED //
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Past Talks -->
+            <section>
+                <h2 class="text-2xl font-bold mb-6 flex items-center gap-3 text-gray-900">
+                    <span class="w-1 h-6 bg-gray-400 rounded-full"></span>
+                    Past Talks
+                </h2>
+                <div class="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm">
+                    <div class="overflow-x-auto p-4">
+                        <table class="w-full text-sm md:text-base">
+                            <thead>
+                                <tr>
+                                    <th class="w-1/6">Date</th>
+                                    <th class="w-1/4">Speaker</th>
+                                    <th class="w-1/3">Title</th>
+                                    <th class="w-1/6 text-right">Recording</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-gray-700">
+                                <tr>
+                                    <td colspan="4" class="text-center py-12 text-gray-400 font-mono text-sm">
+                                        // ARCHIVE EMPTY //
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <footer class="mt-20 pt-8 border-t border-gray-200 text-center text-gray-500 text-sm font-mono">
+            <p>&copy; 2026 AI4Science Catalyst Series. <span class="text-gray-300">|</span> System Status: Online</p>
+        </footer>
+
+    </div>
+
+    <!-- Typewriter Script -->
+    <script>
+        const textElement = document.getElementById('typewriter-text');
+        const phrases = [
+            "AI for Science", 
+            "AI for Biology", 
+            "AI for Discovery", 
+            "AI for Medicine", 
+            "AI for Materials"
+        ];
+        
+        let phraseIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let typeSpeed = 100;
+
+        function type() {
+            const currentPhrase = phrases[phraseIndex];
+            
+            if (isDeleting) {
+                textElement.textContent = currentPhrase.substring(0, charIndex - 1);
+                charIndex--;
+                typeSpeed = 50; // Deleting is faster
+            } else {
+                textElement.textContent = currentPhrase.substring(0, charIndex + 1);
+                charIndex++;
+                typeSpeed = 100; // Typing speed
+            }
+
+            if (!isDeleting && charIndex === currentPhrase.length) {
+                // Finished typing phrase, pause before deleting
+                isDeleting = true;
+                typeSpeed = 2000; 
+            } else if (isDeleting && charIndex === 7) { 
+                // "AI for " has 7 chars. We don't want to delete "AI for "
+                // Stop deleting at "AI for ", switch to next phrase
+                isDeleting = false;
+                phraseIndex = (phraseIndex + 1) % phrases.length;
+                typeSpeed = 500;
+            }
+
+            setTimeout(type, typeSpeed);
+        }
+
+        // Start the typing loop
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize with the first phrase fully typed so it doesn't jump
+            textElement.textContent = "AI for ";
+            charIndex = 7; 
+            setTimeout(type, 1000);
+        });
+    </script>
+</body>
+</html>
